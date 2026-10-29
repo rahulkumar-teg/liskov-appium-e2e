@@ -1,0 +1,18 @@
+{
+  "$schema": "./flags.override.schema.json",
+  "_comment": "List ONLY flags whose live value differs from the repo defaults (config/flags.defaults.ts). Omit a key to accept its default. Per env; 'ios'/'android' blocks are optional and win over 'common'. _overrideWins (v3.1 A2): keys whose override value is used even when the API disagrees (no INFRA:FLAG_DRIFT; Allure tag flag-override-intentional); each must also be declared below.",
+  "source": "Firebase Remote Config console (stage) + Amplitude",
+  "checkedBy": "Rahul Kumar",
+  "checkedAt": "2026-10-28T10:30:00+05:30",
+  "_overrideWins": [],
+  "stage": {
+    "common": {
+      "epaper_pdf_download_excluded_dates": "2025-08-02,2026-08-01"
+    },
+    "android": {
+      "download_config": { "to_queue_max_retry_attempts": 5 }
+    },
+    "ios": {}
+  },
+  "prod": { "common": {} }
+}

@@ -1,0 +1,4 @@
+[
+  { "pattern": "\"(text|value)\"\\s*:\\s*(\\[[^\\]]*\\]|\"(?:[^\"\\\\]|\\\\.)*\")", "flags": "g", "replacer": "\"$1\":\"***\"" },
+  { "pattern": "(sendKeys|setValue|replaceValue|mobile: type)[^\\n]*", "flags": "g", "replacer": "$1 ***" }
+]

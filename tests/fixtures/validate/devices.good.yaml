@@ -1,0 +1,14 @@
+devices:
+  - id: test-iphone
+    target: ios-real
+    status: registered
+    udid: 00008150-TESTUDID0000000
+    gate: release
+    sim: false
+    envSetBy: unit-test
+    envSetAt: "2026-10-28T10:00:00+05:30"
+    registeredAt: "2026-10-28T10:00:00+05:30"
+  - id: test-android
+    target: android-real
+    status: pending
+    gate: release

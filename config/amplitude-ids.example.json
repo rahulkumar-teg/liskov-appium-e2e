@@ -1,0 +1,17 @@
+{
+  "_comment": "v3.1 A1. Copy to config/amplitude-ids.json (git-ignored). Key = the account's username op:// reference from config/accounts.ts; userId = sha256 hex of the account's Salesforce contactId (app: AmplitudeExperimentManager / AmplitudeRemoteConfigServiceImpl), or copied from Debug ▸ Amplitude. _devices = ids observed on a device's Debug screen, keyed by devices.yaml id; never used for flags until accountRef is set.",
+  "op://Automation/core-digital-1/username": {
+    "userId": "<amplitude user id>",
+    "note": "core digital, stage"
+  },
+  "_devices": {
+    "example-device": {
+      "amplitudeDeviceId": "<Debug ▸ Amplitude DeviceID>",
+      "userId": null,
+      "accountRef": null,
+      "role": null,
+      "observedAt": "2026-10-28T00:00:00+05:30",
+      "note": "userId null = logged out"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+devices:
+  - id: old
+    target: ios-real
+    status: registered
+    udid: X1
+    gate: release
+    dedicated: false
+    signedInRole: core_digital
+    envSetBy: a
+    envSetAt: "2026-10-28T10:00:00+05:30"
+    registeredAt: "2026-10-28T10:00:00+05:30"

@@ -1,0 +1,43 @@
+# config/devices.yaml is written ONLY by scripts/register-device.ts (Phase 2) — copy this file only for reference.
+# Dedicated-only (plan §4.21, D12): every listed device is dedicated to automation while a run holds its lock (I2);
+# the framework may log in/out, switch accounts and change locale on it. Shared team devices are NOT listed.
+# gate: release → counts toward the release gate (§7.3); dev-only → development runs only, never counted.
+# status: pending → not yet registered by a human; never selected for a run, validate reports it.
+# There is no `dedicated` or `signedInRole` field (v3): unknown keys are a validation error.
+devices:
+  - id: rahul-iphone17
+    target: ios-real
+    status: pending          # register with scripts/register-device.ts (human confirms dedicated + Staging)
+    udid: YOUR_IPHONE_UDID
+    name: rahulkumar-iPhone17
+    osVersion: "26.7.1"
+    gate: dev-only           # review C9: authoring only, not counted in the release gate
+    sim: false
+  - id: automation-iphone
+    target: ios-real
+    status: pending          # D8: approved, hardware/UDID not yet provided; UDID must be in the Match dev profile (§9.2 b)
+    gate: release
+    sim: false
+  - id: automation-android
+    target: android-real
+    status: pending          # D8
+    gate: release
+    sim: false
+  - id: appium-epaper-api35
+    target: android-emu
+    status: pending
+    avd: appium_epaper_api35 # framework-owned AVD (NOT Pixel_XL_CI / Pixel_XL_CI_port4003)
+    udid: emulator-5590
+    gate: release
+  - id: appium-epaper-iphone17pro-sim
+    target: ios-sim
+    status: pending          # framework-owned simulator (NOT liskov-ci-sim-port4003 / mobile-mcp allow-listed sims)
+    name: iPhone 17 Pro
+    osVersion: "26.x"
+    gate: release
+  - id: appium-epaper-ipad-sim
+    target: ios-sim
+    status: pending          # framework-owned iPad simulator (iPad layout coverage)
+    name: iPad Pro 13-inch (M5) # [ASSUMPTION: model available in Xcode 27.1 runtimes]
+    osVersion: "26.x"
+    gate: release

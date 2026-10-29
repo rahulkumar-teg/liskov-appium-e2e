@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "flags.override.schema.json",
+  "title": "liskov-appium-e2e config/flags.override.json (plan §4.11, v3.1 A2)",
+  "description": "Editor help only. The authoritative check is the zod schema in src/model/Flags.ts (tests/unit/flags-schema.spec.ts keeps them in sync). The A2 rule 'every _overrideWins key is declared in a stage/prod block' is enforced by zod, not here.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "source",
+    "checkedBy",
+    "checkedAt"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "_comment": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string",
+      "minLength": 1
+    },
+    "checkedBy": {
+      "type": "string",
+      "minLength": 1
+    },
+    "checkedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "_overrideWins": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "epaper_pdf_download_enabled",
+          "epaper_pdf_download_min_date",
+          "epaper_pdf_download_excluded_dates",
+          "epaper_pdf_screenshot_disabled",
+          "puwilo_epaper_read_sync_enabled",
+          "download_config"
+        ]
+      }
+    },
+    "stage": {
+      "$ref": "#/$defs/perEnv"
+    },
+    "prod": {
+      "$ref": "#/$defs/perEnv"
+    }
+  },
+  "$defs": {
+    "downloadConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "pdf_download_limit": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "concurrent_pdf_downloads": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "to_queue_max_retry_attempts": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "to_queue_retry_base_delay_secs": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "to_queue_retry_max_delay_secs": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "flagValues": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "epaper_pdf_download_enabled": {
+          "type": "boolean"
+        },
+        "epaper_pdf_download_min_date": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "epaper_pdf_download_excluded_dates": {
+          "type": "string",
+          "pattern": "^$|^\\d{4}-\\d{2}-\\d{2}(,\\d{4}-\\d{2}-\\d{2})*$"
+        },
+        "epaper_pdf_screenshot_disabled": {
+          "type": "boolean"
+        },
+        "puwilo_epaper_read_sync_enabled": {
+          "type": "boolean"
+        },
+        "download_config": {
+          "$ref": "#/$defs/downloadConfig"
+        }
+      }
+    },
+    "perEnv": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "common": {
+          "$ref": "#/$defs/flagValues"
+        },
+        "ios": {
+          "$ref": "#/$defs/flagValues"
+        },
+        "android": {
+          "$ref": "#/$defs/flagValues"
+        }
+      }
+    }
+  }
+}

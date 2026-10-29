@@ -1,0 +1,7 @@
+{
+  "_comment": "Copy to config/wda.local.json (git-ignored, 0600). Personal-team automatic signing for WebDriverAgent ONLY (never the app).",
+  "xcodeOrgId": "<10-char Apple team id — never commit>",
+  "xcodeSigningId": "Apple Development",
+  "updatedWDABundleId": "com.liskovappium.e2e.WebDriverAgentRunner",
+  "derivedDataPath": "~/.liskov-appium/wda-derived"
+}

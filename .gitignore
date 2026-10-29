@@ -1,0 +1,51 @@
+# --- Secrets / local-only config (never commit) ---
+.env
+.env.*
+!.env.example
+.env.op
+config/flags.override.json
+config/amplitude-ids.json
+config/wda.local.json
+config/devices.yaml
+config/devices.yaml.bak
+*.p12
+*.mobileprovision
+*.pem
+*.key
+
+# --- Run output: reports, Allure, evidence, logs ---
+reports/
+allure-results/
+allure-results*/
+allure-report/
+allure-*/
+evidence/
+evidence-*/
+builds/
+*.log
+history.db
+*.sqlite
+
+# --- App binaries ---
+*.apk
+*.aab
+*.ipa
+*.app/
+*.xcarchive/
+
+# --- Framework state (normally lives in ~/.liskov-appium, outside the repo; ignored in case it is ever pointed here) ---
+.liskov-appium/
+
+# --- Tooling / OS ---
+node_modules/
+.DS_Store
+._*
+.idea/
+.vscode/
+*.swp
+
+# Local-only docs and tools (Rahul 2026-10-29 16:48: push only what is needed to install, run and understand the framework)
+docs/archive/
+docs/plan/
+docs/implementation-notes.md
+scripts/dev/
